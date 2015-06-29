@@ -1,51 +1,50 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="universidadApp">
 <head>
 	<meta http-equiv="Content-Type"  content="text/html;charset=UTF-8">
-	<title>Document</title>
+	<title>Ejercicio 02 - Profesor </title>
+	
+
 	<!-- Incluir Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	
+
 	<!-- Incluir  AngularJs -->
 	<script src="js/lib/angular.min.js"></script>
+
+	<script src="js/app.js"></script>
+
 </head>
 <body>
-	<div class="container">
+	<div class="container" ng-controller="profesorCtrl as profe">
 
-		<h1>ng-model</h1>
-		<h4>en Angularjs</h4>
+		<h1>Profesor</h1>
+		<h4>{{ profe.profesor.nombre }}</h4>
 		<hr>
-		
-		<p>
-			Su nombre: {{ nombre | uppercase }}
-			<br>
-			<input type="text" ng-model="nombre" class="form-control" placeholder="Ingresa tu nombre">
-		</p>
 
-		<p>
-			Seleccione el pais: {{ pais }}
-			<select class="form-control" ng-model="pais">
-				<option value="1">Costa Rica</option>
-				<option value="2">Mexico</option>
-				<option value="3">Colombia</option>
-			</select>
-		</p>
+		<div class="row">
+		    
+		    <!-- Div que contiene la imagen del profesor -->
+		    <div class="col-sm-3">
+		        <section class="panel">
+		            <div class="panel-body" align="center">
+		                <img ng-src="{{ profe.profesor.foto }}" class="img-circle" alt="" width="150px" height="150px">
+		            </div>
+		        </section>
+		    </div>
 
-		<p>
-			Seleccione las opciones que desea: {{ opt1 }} {{opt2}}
-			<br>
-			<input type="checkbox" ng-model="opt1"> Opcion 1
-			<br>
-			<input type="checkbox" ng-model="opt2"> Opcion 2
-		</p>
-
-		<p>
-			Seleccione el genero: {{genero}}
-			<br>
-			<input type="radio" value="M" ng-model="genero"> Masculino
-			<br>
-			<input type="radio" value="F" ng-model="genero"> Femenino
-		</p>
-		
+		    <!-- Div, donde se mostrará la bio del profesor -->
+		    <div class="col-sm-9">
+		        <section class="panel">
+		            <div class="panel-body">
+		                {{ profe.profesor.bio }}
+		                <br>
+		                <br>
+		                <strong>Edad:</strong> {{ profe.profesor.edad }} años   
+		            </div>
+		        </section>
+		    </div>
+		</div>
 	</div>	
 
 
