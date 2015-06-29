@@ -5,9 +5,12 @@ app.controller('profesorCtrl', function ($scope) {
 	$scope.profesor = profesorData;	
 	$scope.editando = {};
 
+	$scope.mostrarCaja = false;
+
 	$scope.EditarProfesor = function (){
 
 		angular.copy( $scope.profesor, $scope.editando );
+		$scope.mostrarCaja = true;
 
 
 	}
@@ -15,6 +18,8 @@ app.controller('profesorCtrl', function ($scope) {
 	$scope.GuardarCambios = function (){
 
 		angular.copy( $scope.editando, $scope.profesor);
+		$scope.mostrarCaja = false;
+
 
 	}
 
@@ -22,6 +27,8 @@ app.controller('profesorCtrl', function ($scope) {
 	$scope.CancelarCambios = function (){
 
 		$scope.editando = {};
+		$scope.mostrarCaja = false;
+
 
 	}
 });
