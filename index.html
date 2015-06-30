@@ -2,7 +2,7 @@
 <html ng-app="universidadApp">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Filtros - ng-repeat</title>
+        <title>ng-options</title>
 
 
         <!-- Incluir Bootstrap -->
@@ -16,64 +16,29 @@
 
         <script src="js/app.js"></script>
         
-        <style>
-            .avatar{
-                width: 75px;
-                height: 75px;
-            }
-
-            .puntero{
-            	cursor: pointer;
-            }
-
-        </style>
-
     </head>    
     <body>
 
         <div class="container" ng-controller="listadoCtrl">
             
-            <h1>Filtros</h1>
-            <h4>Para el ng-repeat</h4>
+            <h1>ng-options</h1>
+            <h4>Repeticiones para elementos</h4>
             <hr>
 
-            <div class="row">
-            	Busqueda:
-            	<br>
-				<input type="text" ng-model="busqueda.nombre" class="form-control" placeholder="Ingresa busqueda">
-				<br>
-					
-				Sexo:
-				<br>
-				<select ng-model="busqueda.sexo" class="form-control">
-					<option value="">Cualquiera</option>
-					<option value="mujer">Mujeres</option>
-					<option value="hombre">Hombres</option>
-				</select>
-
-            </div>
-
-            <table class="table table-striped">
-            	<tr>
-            		<th>Avatar</th>
-            		<th><a class="puntero" ng-click="columna = 'nombre'; reverse = !reverse;">Nombre</a></th>
-            		<th><a class="puntero" ng-click="columna = 'sexo'; reverse = !reverse;">Sexo</a></th>
-            		<th>Telefono</th>
-            		<th>Celular</th>
-            	</tr>
-
-            	<tr ng-repeat="persona in personas | filter:busqueda | orderBy:columna:reverse ">
-            		<td><img ng-src="img/{{ persona.avatar}}" class="avatar img-circle"></td>
-            		<td>{{persona.nombre}}</td>
-            		<td>{{persona.sexo}}</td>
-            		<td>{{persona.telefono}}</td>
-            		<td>{{persona.celular}}</td>
-            	</tr>
-            </table>
-
+            Seleccion del país: {{ paisSeleccionado }}
+            <select ng-model="paisSeleccionado" class="form-control">
+            	<option value="">Seleccione</option>
+            	<option ng-repeat="pais in paises" value="{{ pais.id}}">{{ pais.nombre }}</option>
+            </select>
+			
+			<br>
+			Selección del pais:
+			<select ng-model="paisSeleccionado" class="form-control" ng-options="pais.id as pais.nombre for pais in paises">
+				<option value="">Seleccione</option>
+			</select>
             
-            
-            
+
+
 
         </div><!-- fin del listadoCtrl -->
 
