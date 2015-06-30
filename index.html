@@ -2,7 +2,7 @@
 <html ng-app="ejemplosApp">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>ng-include</title>
+        <title>Detectando IPs</title>
 
 
         <!-- Incluir Bootstrap -->
@@ -21,14 +21,24 @@
 
         <div class="container" ng-controller="mainCtrl">
             
-            <h1>ng-include</h1>
-            <h4>Data dinámica</h4>
+            <h1>Detectar IPs</h1>
+            <h4>Manejo de recursos online</h4>
             <hr>
+
+            ip: {{ geo.geoplugin_request }}
+            <br>
+
+            Pais: {{ geo.geoplugin_countryName }}
+            <br>
+
+            Moneda: {{ geo.geoplugin_currencySymbol_UTF8 }}
+            <br>
             
-            <div ng-include="tblProfesores"></div>
-            
-			{{ profesores | json }}
-			
+            <br><br>
+
+            {{ geo | json }}
+
+
 
 
         </div><!-- fin del listadoCtrl -->

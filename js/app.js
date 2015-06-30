@@ -6,15 +6,16 @@ var app = angular.module('ejemplosApp',[ ]);
 
 app.controller('mainCtrl', ['$scope','$http', function($scope,$http){
   
-  
-	$scope.profesores = {};
-	$scope.tblProfesores = 'parciales/tblProfesores.html';
+  //http://www.geoplugin.net/json.gp?jsoncallback=JSON_CALLBACK
+	$scope.geo = {};
 
-	$http.get('json/profesores.json').success(function (data){
+  	$http.jsonp('http://www.geoplugin.net/json.gp?jsoncallback=JSON_CALLBACK').success(function (data){
 
-		//Codigo cuando es correcta la peticion
-		$scope.profesores = data.profesores;
-	});
+  			$scope.geo = data;
+
+  	});
+
+
 }]);
 
 
@@ -22,4 +23,3 @@ app.controller('mainCtrl', ['$scope','$http', function($scope,$http){
 
 
 })();
-
