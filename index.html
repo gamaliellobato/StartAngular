@@ -2,7 +2,7 @@
 <html ng-app="ejemplosApp">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Detectando IPs</title>
+        <title>El Clima</title>
 
 
         <!-- Incluir Bootstrap -->
@@ -21,24 +21,25 @@
 
         <div class="container" ng-controller="mainCtrl">
             
-            <h1>Detectar IPs</h1>
+            <h1>Clima</h1>
             <h4>Manejo de recursos online</h4>
             <hr>
 
-            ip: {{ geo.geoplugin_request }}
-            <br>
-
-            Pais: {{ geo.geoplugin_countryName }}
-            <br>
-
-            Moneda: {{ geo.geoplugin_currencySymbol_UTF8 }}
-            <br>
-            
+            lat y long: {{ clima.coord.lat}} , {{ clima.coord.lon }}
             <br><br>
 
-            {{ geo | json }}
+            Pais: {{ clima.sys.country }}
+            <br><br>
+            
+            Amanece: {{clima.sys.sunrise | date:'HH:mm:ss'}}
+            <br>
+            Anochece: {{ clima.sys.sunset | date:'HH:mm:ss'}}
 
+            <br><br>
+            Temperatura: {{ kelvinCelcius(clima.main.temp) }}
 
+            <br><br>
+            {{ clima | json }}
 
 
         </div><!-- fin del listadoCtrl -->
