@@ -1,36 +1,19 @@
 (function(){
 
-var app = angular.module('universidadApp',[ ]);
+var app = angular.module('ejemplosApp',[ ]);
 
 
 
-app.controller('listadoCtrl', ['$scope', function($scope){
+app.controller('mainCtrl', ['$scope','$http', function($scope,$http){
+  
+  
+	$scope.profesores = {};
 
-	$scope.paisSeleccionado = "ARE";
- 
+	$http.get('json/profesores.json').success(function (data){
 
-  $scope.paises = [
-      { id:"CRI", nombre:"COSTA RICA"},
-      { id:"HRV", nombre:"CROACIA"},
-      { id:"CUB", nombre:"CUBA"},
-      { id:"DNK", nombre:"DINAMARCA"},
-      { id:"DMA", nombre:"DOMINICA"},
-      { id:"DOM", nombre:"REPÚBLICA DOMINICANA"},
-      { id:"ECU", nombre:"ECUADOR"},
-      { id:"EGY", nombre:"EGIPTO"},
-      { id:"SLV", nombre:"EL SALVADOR"},
-      { id:"ARE", nombre:"EMIRATOS ÁRABES UNIDOS"},
-      { id:"ERI", nombre:"ERITREA"},
-      { id:"SVK", nombre:"ESLOVAQUIA"},
-      { id:"SVN", nombre:"ESLOVENIA"},
-      { id:"ESP", nombre:"ESPAÑA"},
-      { id:"USA", nombre:"ESTADOS UNIDOS"},
-      { id:"EST", nombre:"ESTONIA"}
-  ];
-
-
-
-
+		//Codigo cuando es correcta la peticion
+		$scope.profesores = data.profesores;
+	});
 }]);
 
 
@@ -38,3 +21,4 @@ app.controller('listadoCtrl', ['$scope', function($scope){
 
 
 })();
+
