@@ -2,7 +2,7 @@
 <html ng-app="ejemplosApp">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>http-request</title>
+        <title>ng-include</title>
 
 
         <!-- Incluir Bootstrap -->
@@ -21,9 +21,11 @@
 
         <div class="container" ng-controller="mainCtrl">
             
-            <h1>$HTTP Request</h1>
+            <h1>ng-include</h1>
             <h4>Data dinámica</h4>
             <hr>
+            
+            <div ng-include="tblProfesores"></div>
             
 			{{ profesores | json }}
 			
