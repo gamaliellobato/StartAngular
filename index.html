@@ -19,64 +19,43 @@
 
 </head>
 <body>
-	<div class="container" ng-controller="profesorCtrl as profe">
-
-		<h1>Profesor</h1>
-		<h4>{{ profesor.nombre }}</h4>
+	
+	<div class="container" ng-controller="listadoCtrl">
+		
+		<h1>ng-repeat</h1>
+		<h4>Manejando repeticiones</h4>
 		<hr>
 
-		<div class="row">
-		    
-		    <!-- Div que contiene la imagen del profesor -->
-		    <div class="col-sm-3">
-		        <section class="panel">
-		            <div class="panel-body" align="center">
-		                <img ng-src="{{ profesor.foto }}" class="img-circle" alt="" width="150px" height="150px">
-		            </div>
-		        </section>
-		    </div>
+		<ul>
+			<li ng-repeat="nombre in listado">
+				{{ nombre }}
+			</li>
+		</ul>
 
-		    <!-- Div, donde se mostrará la bio del profesor -->
-		    <div class="col-sm-9">
-		        <section class="panel">
-		            <div class="panel-body">
-		                {{ profesor.bio }}
-		                <br>
-		                <br>
-		                <strong>Edad:</strong> {{ profesor.edad }} años   
-		                <br>
-		                <button class="btn btn-primary" ng-click="EditarProfesor()">Editar</button>
-		            </div>
-		        </section>
-		    </div>
-		</div>
+		<table class="table table-striped">
+			<tr>
+				<th>Nombre</th>
+				<th>Edad</th>
+				<th>Clase</th>
+			</tr>
 
-		<div class="row animated fadeIn fast" ng-show="mostrarCaja">
-			
-			<div class="col-sm-9">
-		        <section class="panel">
-		            <div class="panel-body">
+			<tr ng-repeat="profesor in listadoProfesores.profesores">
+				<td>{{ profesor.nombre}}</td>
+				<td>{{ profesor.edad}}</td>
+				<td>{{ profesor.clase}}</td>
+			</tr>
+		</table>
 
-		                Nombre: 
-		                <input type="text" class="form-control" ng-model="editando.nombre">
-		                <br>
+			<ul>
+				<li ng-repeat="numero in [1,2,3,4,5,6,7,8,9,10]">
+					2 X {{ numero }} = {{ 2 * numero}}
+				</li>
+			</ul>
 
-		                Edad:
-		                <input type="text" class="form-control" ng-model="editando.edad">
-		                <br>
-						
-						Bio:
-		                <textarea  class="form-control" ng-model="editando.bio" rows="5"></textarea>
-		                <br>
-		                <button class="btn btn-primary" ng-click="GuardarCambios()">Guardar</button>
-		                <button class="btn btn-danger" ng-click="CancelarCambios()">Cancelar</button>
+		{{ listadoProfesores | json}}
 
-		            </div>
-		        </section>
-		    </div>
 
-		</div>
-	</div>	
+	</div>
 
 
 </body>

@@ -1,41 +1,30 @@
-var app = angular.module('universidadApp', [ ]);
+(function(){
 
-app.controller('profesorCtrl', function ($scope) {
-	
-	$scope.profesor = profesorData;	
-	$scope.editando = {};
+	var app = angular.module('universidadApp', []);
 
-	$scope.mostrarCaja = false;
+	app.controller('listadoCtrl', ['$scope', function ($scope) {
 
-	$scope.EditarProfesor = function (){
+		$scope.listado = ["Fernando Herrera","Melissa Flores","Juan Carlos Pineda","Maria Perez"];
 
-		angular.copy( $scope.profesor, $scope.editando );
-		$scope.mostrarCaja = true;
+		$scope.listadoProfesores = {
 
+			profesores: [{
+				nombre: "Fernando Herrera",
+				edad: 29,
+				clase: "PEE"
+			},
+			{
+				nombre: "Melissa Flores",
+				edad: 24,
+				clase: "ICE"
+			},
+			{
+				nombre: "Juan Carlos",
+				edad: 42,
+				clase: "M110"
+			}]
+		}
+		
+	}]);
 
-	}
-
-	$scope.GuardarCambios = function (){
-
-		angular.copy( $scope.editando, $scope.profesor);
-		$scope.mostrarCaja = false;
-
-
-	}
-
-
-	$scope.CancelarCambios = function (){
-
-		$scope.editando = {};
-		$scope.mostrarCaja = false;
-
-
-	}
-});
-
-var profesorData = {
-	nombre: "Juan Carlos Pineda",
-	bio: "Saludos estudiante, mi nombre es Juan Carlos, encantado de conocerte, soy una apasionado instructor de matemáticas aplicadas cuánticas, más orientado a la física termonuclear. Mi vocación es ser maestro y lograr transmitir mis conocimientos a todos mis estudiantes!.",
-	edad: 47,
-	foto: "img/juancarlos.jpg"
-}
+})();
