@@ -1,36 +1,17 @@
-(function(){
-
-var app = angular.module('ejemplosApp',[ ]);
-
-
+var app = angular.module('universidadApp',['ngRoute']);
 
 app.controller('mainCtrl', ['$scope','$http', function($scope,$http){
   
-  //http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&callback=JSON_CALLBACK
-	$scope.clima = {};
+	$scope.menuSuperior = 'parciales/menu.html';
 
-	$http.jsonp('http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&callback=JSON_CALLBACK')
-		.success(function(data){
+	$scope.setActive = function(Opcion){
 
-			$scope.clima = data;
+		$scope.mInicio = "";
+		$scope.mProfesores = "";
+		$scope.mAlumnos = "";
 
-		});
-
-	$scope.kelvinCelcius =  function (k){
-
-		c = k - 273.15;
-		c = Math.round( c*100) / 100;
-
-		return c;
+		$scope[Opcion] = "active";
 
 	};
 
-
-
 }]);
-
-
-
-
-
-})();
